@@ -4,8 +4,13 @@ import java.awt.*;
 import java.awt.event.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.sql.*;
 
 public class StudentRegistrationSystem extends JFrame implements ActionListener {
+
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/student";
+    private static final String DB_USER = "root";
+    private static final String DB_PASS = "1234";
 
     JTextField txtName, txtRoll, txtMobile, txtEmail;
     JTextArea txtAddress;
@@ -145,6 +150,28 @@ public class StudentRegistrationSystem extends JFrame implements ActionListener 
 
     void msg(String s){JOptionPane.showMessageDialog(this,s);}
 
+    boolean saveToDatabase(){
+        String sql = "INSERT INTO students (name,roll_no,branch,semester,gender,mobile,email,dob,address) VALUES (?,?,?,?,?,?,?,?,?)";
+        String dob = cbDay.getSelectedItem()+"-"+cbMonth.getSelectedItem()+"-"+cbYear.getSelectedItem();
+        try(Connection con = DriverManager.getConnection(DB_URL,DB_USER,DB_PASS);
+            PreparedStatement ps = con.prepareStatement(sql)){
+            ps.setString(1,txtName.getText().trim());
+            ps.setString(2,txtRoll.getText().trim());
+            ps.setString(3,cbBranch.getSelectedItem().toString());
+            ps.setString(4,cbSemester.getSelectedItem().toString());
+            ps.setString(5,rbMale.isSelected()?"Male":"Female");
+            ps.setString(6,txtMobile.getText().trim());
+            ps.setString(7,txtEmail.getText().trim());
+            ps.setString(8,dob);
+            ps.setString(9,txtAddress.getText().trim());
+            ps.executeUpdate();
+            return true;
+        }catch(SQLException ex){
+            msg("Database error: "+ex.getMessage());
+            return false;
+        }
+    }
+
     String details(){
         return "Name : "+txtName.getText()+
                 "\nRoll : "+txtRoll.getText()+
@@ -170,8 +197,11 @@ public class StudentRegistrationSystem extends JFrame implements ActionListener 
             JOptionPane.showMessageDialog(this,details(),"Preview",JOptionPane.INFORMATION_MESSAGE);
         }else if(s==btnSubmit){
             if(validateData()){
-                JOptionPane.showMessageDialog(this,"Registration Successful!\n\n"+details());
-                status.setText(" Registration Successful");
+                if(saveToDatabase()){
+                    JOptionPane.showMessageDialog(this,"Registration Successful!\n\n"+details()+"\n\nSaved to database 'student'");
+                    status.setText(" Registration Successful - Saved to DB");
+                    reset();
+                }
             }
         }else if(s==btnReset){
             if(JOptionPane.showConfirmDialog(this,"Reset form?","Confirm",JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION)
