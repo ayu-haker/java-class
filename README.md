@@ -1,106 +1,129 @@
-# Java MVC Calculator (Swing)
+# Java Programming Lab — Practical Repository
 
-## 📌 Experiment
+**Core Java | JDBC | RMI | Servlets | JSP | MVC Architecture**
 
-This project demonstrates the **Model-View-Controller (MVC)** architecture using **Java Swing**. It is a simple calculator that performs basic arithmetic operations.
+## About This Repository
 
-## 🎯 Objective
+This repository contains Java programming lab experiments developed as part of my academic coursework. It covers core Java concepts, database connectivity, distributed computing, desktop application development, and Java-based web application development.
 
-* Understand the MVC design pattern.
-* Develop a Java Swing GUI application.
-* Separate business logic, user interface, and event handling.
+The purpose of this repository is to demonstrate practical implementation of Java programming concepts, strengthen problem-solving skills, and understand how Java technologies are used to develop software applications.
 
-## 🛠 Technologies Used
+## Student Information
 
-* Java
-* Java Swing
-* MVC Architecture
+| Field       | Details                                               |
+| ----------- | ----------------------------------------------------- |
+| Name        | Ayushman Bosu Roy                                     |
+| Roll Number | 24EGJCS046                                            |
+| Course      | B.Tech                                                |
+| Department  | Computer Science and Engineering                      |
+| Repository  | [java-class](https://github.com/ayu-haker/java-class) |
+| GitHub      | [@ayu-haker](https://github.com/ayu-haker)            |
 
-## 📂 Project Structure
+## Repository Structure
 
-```
-Java-MVC-Calculator/
-│── CalculatorModel.java
-│── CalculatorView.java
-│── CalculatorController.java
-│── Main.java
-└── README.md
-```
+| Directory                   | Description                                                                 |
+| --------------------------- | --------------------------------------------------------------------------- |
+| `RMI/`                      | Programs related to Java Remote Method Invocation and distributed computing |
+| `calculator/`               | Calculator application demonstrating Java programming concepts              |
+| `jdbc/`                     | Database connectivity and operations using JDBC                             |
+| `jsp-servlet-student-main/` | Student portal web application using JSP and Servlets                       |
+| `registration portal/`      | Registration portal project                                                 |
+| `servlet/`                  | Web application development using Java Servlets                             |
 
-## 📖 Description
+The implementation details and execution requirements may vary for each experiment.
 
-### Model (`CalculatorModel.java`)
+## Technologies Used
 
-Contains the business logic for:
+* Java and Object-Oriented Programming
+* Java Swing for graphical user interfaces, where applicable
+* Java Database Connectivity (JDBC)
+* Java Remote Method Invocation (RMI)
+* Java Servlets
+* JavaServer Pages (JSP)
+* Model-View-Controller (MVC) architecture
+* HTML and CSS for web interfaces, where applicable
+* SQL and relational databases, where configured
 
-* Addition
-* Subtraction
-* Multiplication
-* Division
+## Learning Objectives
 
-### View (`CalculatorView.java`)
+* Understand core Java programming concepts.
+* Apply object-oriented programming principles.
+* Develop and organize modular Java applications.
+* Implement database connectivity using JDBC.
+* Explore distributed applications using Java RMI.
+* Handle HTTP requests and responses using Servlets.
+* Develop dynamic web pages using JSP.
+* Understand MVC architecture and separation of concerns.
+* Practice debugging, testing, and maintaining Java programs.
 
-Creates the graphical user interface using Java Swing components such as:
+## Getting Started
 
-* Labels
-* Text Fields
-* Buttons
-* JFrame
+### Prerequisites
 
-### Controller (`CalculatorController.java`)
+Depending on the experiment, you may need:
 
-Handles user actions, receives input from the View, calls the Model for calculations, and displays the result.
+* Java Development Kit (JDK)
+* An IDE such as IntelliJ IDEA, Eclipse, NetBeans, or Visual Studio Code
+* MySQL or another compatible database for database-driven projects
+* Apache Tomcat or another compatible servlet container for JSP and Servlet projects
+* Required external libraries and build tools, where applicable
 
-### Main (`Main.java`)
-
-Creates objects of the Model, View, and Controller to start the application.
-
-## ✨ Features
-
-* Addition (+)
-* Subtraction (-)
-* Multiplication (*)
-* Division (/)
-* Simple and user-friendly interface
-* Follows MVC architecture
-
-## ▶️ How to Run
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/your-username/Java-MVC-Calculator.git
-```
-
-2. Open the project in your preferred Java IDE (IntelliJ IDEA, Eclipse, or NetBeans).
-
-3. Compile all Java files.
-
-4. Run:
+### Clone the Repository
 
 ```bash
-Main.java
+git clone https://github.com/ayu-haker/java-class.git
+cd java-class
 ```
 
-## 📷 Output
+### Running an Experiment
 
-The application displays a calculator window where users can:
+1. Navigate to the required experiment directory.
+2. Review the source code and project configuration.
+3. Install the required dependencies.
+4. Configure the database or application server if needed.
+5. Compile and execute the program according to its project structure.
 
-* Enter two numbers.
-* Select an arithmetic operation.
-* View the calculated result.
+For a standalone Java program without external dependencies:
 
-## 📚 Learning Outcomes
+```bash
+javac Main.java
+java Main
+```
 
-* Implemented the MVC design pattern.
-* Built a Java Swing desktop application.
-* Handled button events using ActionListener.
-* Organized Java code into Model, View, and Controller components.
+Replace `Main.java` with the actual Java entry-point file. Projects involving JDBC, RMI, JSP, Servlets, or external libraries may require additional configuration.
 
-## 👨‍💻 Author
+## Featured Practical: MVC Calculator
 
-Ayushman Bosu Roy
+The MVC Calculator demonstrates the Model-View-Controller design pattern in Java.
 
-**Course:** B.Tech (Artificial Intelligence)
+* **Model:** Handles application logic and arithmetic operations.
+* **View:** Provides the calculator's user interface.
+* **Controller:** Processes user interactions and coordinates the application components.
 
-**Experiment:** Java Swing MVC Calculator
+The documented arithmetic operations include addition, subtraction, multiplication, and division.
+
+## Future Improvements
+
+* Add individual documentation for each experiment.
+* Include screenshots and sample outputs.
+* Document project-specific setup and execution steps.
+* Improve input validation and exception handling.
+* Add automated testing and build workflows where applicable.
+* Maintain consistent project naming and organization.
+
+## Author
+
+**Ayushman Bosu Roy**
+Roll Number: 24EGJCS046
+B.Tech — Department of Computer Science and Engineering
+
+GitHub: [ayu-haker](https://github.com/ayu-haker)
+LinkedIn: [Ayushman Bosu Roy](https://www.linkedin.com/in/ayushman-bosu-roy-24b3842b1/)
+
+## License
+
+This repository is intended for educational and academic purposes. Unless a license is explicitly provided, reuse and redistribution of code should follow the applicable permissions and licenses of the original authors and dependencies.
+
+---
+
+**Java Programming Lab — Learn, Implement, and Improve.**
