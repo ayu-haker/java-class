@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nyxora Store | Discover better</title>
+  <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+<header class="nav">
+  <a class="brand" th:href="@{/}"><span class="brand-mark">N</span> NYXORA<span class="muted"> / STORE</span></a>
+  <nav><a th:href="@{/}">Discover</a><a th:href="@{/orders}">Orders</a><a class="cart-link" th:href="@{/cart}">Cart <span th:text="${cartCount}">0</span></a></nav>
+</header>
+<main>
+  <section class="hero">
+    <div><p class="eyebrow">THE EVERYDAY EDIT · 2026</p>
+      <h1>Good finds.<br><span>Better living.</span></h1>
+      <p class="hero-copy">Thoughtful essentials for your desk, your home and everywhere you go.</p>
+      <a class="button light" href="#catalog">Explore collection ↓</a>
+    </div>
+    <div class="hero-art"><div class="orbit"></div><div class="hero-card"><span>NYXORA</span><strong>Less noise.<br>More you.</strong><small>CURATED ESSENTIALS</small></div></div>
+  </section>
+  <div class="notice" th:if="${notice}" th:text="${notice}"></div>
+  <section id="catalog" class="catalog">
+    <div class="section-head"><div><p class="eyebrow">HANDPICKED FOR YOU</p><h2>Explore the collection</h2></div>
+      <form class="search" method="get" th:action="@{/}"><input name="q" placeholder="Search products..." th:value="${query}"><button type="submit">Search</button></form>
+    </div>
+    <div class="products" th:if="${!products.isEmpty()}">
+      <article class="product" th:each="p : ${products}">
+        <div class="product-image"><img th:src="${p.image}" th:alt="${p.name}"><span class="category" th:text="${p.category}">Category</span></div>
+        <div class="product-info"><h3 th:text="${p.name}">Product</h3><p th:text="${p.description}">Description</p>
+          <div class="product-bottom"><strong th:text="|₹${#numbers.formatDecimal(p.price,1,2)}|">₹0</strong>
+            <form method="post" th:action="@{/cart/add/{id}(id=${p.id})}"><button class="add" type="submit" th:disabled="${p.stock < 1}" th:text="${p.stock < 1 ? 'Sold out' : '＋ Add'}">＋ Add</button></form>
+          </div><small class="stock" th:text="|${p.stock} in stock|">Stock</small>
+        </div>
+      </article>
+    </div>
+    <p class="empty" th:if="${products.isEmpty()}">No products found. Try another search.</p>
+  </section>
+</main>
+<footer><a class="brand" th:href="@{/}">NYXORA</a><span>Built with Java · Spring Boot · Thymeleaf</span></footer>
+</body></html>

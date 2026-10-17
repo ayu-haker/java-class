@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Your Cart | Nyxora</title><link rel="stylesheet" th:href="@{/style.css}"></head>
+<body>
+<header class="nav"><a class="brand" th:href="@{/}"><span class="brand-mark">N</span> NYXORA<span class="muted"> / STORE</span></a><nav><a th:href="@{/}">Continue shopping</a><a th:href="@{/orders}">Orders</a></nav></header>
+<main class="page"><p class="eyebrow">YOUR SELECTION</p><h1 class="page-title">Shopping cart</h1>
+<div class="notice" th:if="${notice}" th:text="${notice}"></div>
+<div class="cart-layout" th:if="${!lines.isEmpty()}">
+<section class="cart-items"><article class="cart-item" th:each="line : ${lines}"><div><h3 th:text="${line.product.name}">Product</h3><p th:text="${line.product.category}">Category</p><span th:text="|Quantity: ${line.quantity}|">Qty</span></div><strong th:text="|₹${#numbers.formatDecimal(line.subtotal,1,2)}|">₹0</strong><form method="post" th:action="@{/cart/remove/{id}(id=${line.product.id})}"><button class="remove" type="submit">Remove</button></form></article></section>
+<aside class="summary"><p class="eyebrow">ORDER SUMMARY</p><div class="summary-line"><span>Subtotal</span><strong th:text="|₹${#numbers.formatDecimal(total,1,2)}|">₹0</strong></div><div class="summary-line"><span>Shipping</span><strong>Free</strong></div><hr><div class="summary-line total"><span>Total</span><strong th:text="|₹${#numbers.formatDecimal(total,1,2)}|">₹0</strong></div><form method="post" th:action="@{/checkout}"><button class="button dark full" type="submit">Place demo order →</button></form><small>Demo checkout only. No payment is collected.</small></aside>
+</div>
+<div class="empty-panel" th:if="${lines.isEmpty()}"><h2>Your cart is taking a break.</h2><p>Find something you'll love in our collection.</p><a class="button dark" th:href="@{/}">Browse products</a></div>
+</main><footer><a class="brand" th:href="@{/}">NYXORA</a><span>Thoughtful essentials, everyday.</span></footer>
+</body></html>

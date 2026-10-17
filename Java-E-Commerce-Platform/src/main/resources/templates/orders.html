@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Your Orders | Nyxora</title><link rel="stylesheet" th:href="@{/style.css}"></head>
+<body>
+<header class="nav"><a class="brand" th:href="@{/}"><span class="brand-mark">N</span> NYXORA<span class="muted"> / STORE</span></a><nav><a th:href="@{/}">Discover</a><a th:href="@{/cart}">Cart</a></nav></header>
+<main class="page"><p class="eyebrow">YOUR ACTIVITY</p><h1 class="page-title">Order history</h1>
+<div class="empty-panel" th:if="${orders.isEmpty()}"><h2>No orders yet.</h2><p>Your next favourite thing is waiting.</p><a class="button dark" th:href="@{/}">Explore store</a></div>
+<section class="order-list" th:if="${!orders.isEmpty()}"><article class="order-card" th:each="o : ${orders}"><div class="order-top"><div><small>ORDER REFERENCE</small><h3 th:text="${o.number}">ORDER</h3></div><span class="status">Demo order placed</span></div><div class="order-lines"><div class="order-line" th:each="item : ${o.items}"><span th:text="|${item.name} × ${item.quantity}|">Item</span><strong th:text="|₹${#numbers.formatDecimal(item.subtotal,1,2)}|">₹0</strong></div></div><div class="order-total"><span>Total</span><strong th:text="|₹${#numbers.formatDecimal(o.total,1,2)}|">₹0</strong></div></article></section>
+<p class="muted note">Demo orders are kept in your current browser session and are not payment confirmations.</p></main>
+<footer><a class="brand" th:href="@{/}">NYXORA</a><span>Built with Java · Spring Boot · H2</span></footer>
+</body></html>
