@@ -3,3 +3,8 @@
     <artifactId>mysql-connector-j</artifactId>
     <version>9.5.0</version>
 </dependency>
+<plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>exec-maven-plugin</artifactId>
+    <version>3.5.0</version>
+</plugin>
